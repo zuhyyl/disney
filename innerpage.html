@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Disney India | The Official Home For All Things Disney</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="./assets/numberonelogo.png">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* Glitch Animation for Coming Soon */
+        .glitch {
+            font-size: 3rem;
+            font-weight: bold;
+            position: relative;
+            animation: glitch 1s infinite alternate;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px red, -2px -2px cyan; }
+            50% { text-shadow: -2px -2px red, 2px 2px cyan; }
+            100% { text-shadow: 2px -2px red, -2px 2px cyan; }
+        }
+
+        /* Fade-in and Slide Up Animation */
+        .fade-slide {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideUp 2s ease-in-out forwards;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Bouncing Countdown Timer */
+        #countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: inline-block;
+            animation: bounce 1s infinite alternate ease-in-out;
+        }
+
+        @keyframes bounce {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="glitch">Coming Soon</h1>
+    <p class="fade-slide">We are working hard to bring you something amazing!</p>
+    <div id="countdown"></div>
+
+    <script>
+        // Set the launch date
+        const launchDate = new Date("November 30, 2025 00:00:00").getTime();
+        
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const timeLeft = launchDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (timeLeft < 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "We're Live!";
+            }
+        }, 1000);
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
