@@ -15,6 +15,10 @@ body {
     width: 100%; /* Make both images responsive */
     height: auto;
   }
+#fd{
+    text-decoration: none;
+    cursor: pointer;
+}
 
   .adventure-img{
     position: absolute;
